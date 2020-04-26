@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Distributer;
 use Auth;
+use DB;
 use App\Http\Controllers\ApiResponse;
 
 class ApiDistributersController extends Controller
@@ -37,5 +38,13 @@ class ApiDistributersController extends Controller
         }catch(Exception $e){
             return $this->apiResponse->sendResponse(500, "Server Error", "Error");
         }
+    }
+
+    public function get_coordinates(){
+        $coord = DB::table('distributers')->select('Latitude','Longitude')->get();
+        $coord_array = array();
+        foreach ($coord as $c){$coord_array[] = array($c->Latitude, $c->Longitude);}
+        
+        return $this->apiResponse->sendResponse(200, "Success", $coord_array);
     }
 }

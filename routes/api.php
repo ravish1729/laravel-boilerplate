@@ -18,6 +18,7 @@ Route::post('{provider}/verifyAccessToken',['uses'=>'ApiAuthController@verifyAcc
 Route::post('refresh',['uses'=>'ApiAuthController@refresh']);
 Route::get('{provider}/authorize',['uses'=>'ApiAuthController@auth']);
 Route::get('{provider}/login',['uses'=>'ApiAuthController@login']);
+Route::get('hey',['uses'=>'ApiDistributersController@temp']);
 
 /*
 Route::middleware('auth:api')->get('/user', function (Request $request) {

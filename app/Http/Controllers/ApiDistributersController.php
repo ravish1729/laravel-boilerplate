@@ -13,6 +13,10 @@ class ApiDistributersController extends Controller
         $this->apiResponse=$apiResponse;
      }
 
+    public function temp(){
+        return $this->apiResponse->sendResponse(200,"Success","Hey");
+    }
+
     public function add_details(Request $request){
         
     }

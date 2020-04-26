@@ -20,6 +20,11 @@ Route::get('{provider}/authorize',['uses'=>'ApiAuthController@auth']);
 Route::get('{provider}/login',['uses'=>'ApiAuthController@login']);
 Route::get('hey',['uses'=>'ApiDistributersController@temp']);
 
+Route::group(['middleware' => 'auth:api'], function(){
+
+    Route::post('save_checklist',['uses'=>'ApiDistributersController@add_details']);
+
+});
 /*
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
